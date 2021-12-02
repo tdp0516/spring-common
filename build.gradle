@@ -1,0 +1,41 @@
+
+plugins {
+    alias(libs.plugins.jvm.spring.quality)
+    alias(libs.plugins.jvm.lib)
+}
+
+// Spring applications typically produce boot jars
+// TODO Make spring lib plugin
+jar.enabled = true
+bootJar.enabled = false
+
+dependencies {
+    api libs.bundles.spring.boot
+    api libs.spring.boot.starter.security
+    api libs.spring.boot.starter.thymeleaf
+    api libs.bundles.swagger
+
+    implementation libs.jwt
+	implementation libs.spring.boot.starter.mail
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.tpero.spring'
+            artifactId = 'spring-common'
+            version = '0.0'
+            from components.java
+        }
+    }
+}
+
+testing {
+	suites {
+		test {
+			dependencies {
+				implementation libs.spring.security.test
+			}
+		}
+	}
+}
