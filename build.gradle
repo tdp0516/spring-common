@@ -1,5 +1,6 @@
 
 plugins {
+	alias(libs.plugins.jfrog)
     alias(libs.plugins.jvm.spring.quality)
     alias(libs.plugins.jvm.lib)
 }
@@ -36,6 +37,23 @@ testing {
 			dependencies {
 				implementation libs.spring.security.test
 			}
+		}
+	}
+}
+
+artifactory {
+	contextUrl = System.properties['artifactoryUrl']
+
+	publish {
+		repository {
+			repoKey = 'default-maven-local'
+			username = System.properties['artifactoryUser']
+			password = System.properties['artifactoryApiKey']
+			maven = true
+		}
+
+		defaults {
+			publications(publishing.publications.names.toArray())
 		}
 	}
 }

@@ -3,7 +3,17 @@ pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
-        google()
+		maven {
+			url = System.properties['artifactoryUrl'] + '/default-maven-local' ?: 'https://localhost:8080'
+
+			credentials {
+				username = System.properties['artifactoryUser'] ?: ''
+				password = System.properties['artifactoryApiKey'] ?: ''
+			}
+		}
+		// Required for the android dependency my plugin jar has
+		// TODO Separate plugins into separate jars so that this isn't necessary
+		google()
     }
 }
 
@@ -18,7 +28,7 @@ dependencyResolutionManagement {
         // by system properties set via github secrets. The reason for the hard-coded default dummy
         // values is to allow the gradle scripts to properly resolve locally during evaluation.
         // TODO Refactor this so the dummy defaults aren't necessary
-//        mavenLocal()
+        mavenLocal()
         maven {
             url = System.properties['artifactoryUrl'] + '/default-maven-local' ?: 'https://localhost:8080'
 
