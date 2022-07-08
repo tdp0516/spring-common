@@ -19,7 +19,7 @@ class EmailServiceSpec extends Specification {
 	
 	def "Test sending an email successfully"() {
 		given:
-		final String toAddress = "tpero3@gatech.edu"
+		final String toAddress = "some@email.com"
 		final String subject = "Email subject"
 		final String bodyTemplateFileName = "email-template"
 		final Context context = new Context()

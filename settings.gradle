@@ -19,8 +19,6 @@ pluginManagement {
 
 rootProject.name = 'spring-common'
 
-enableFeaturePreview('VERSION_CATALOGS')
-
 dependencyResolutionManagement {
     repositories {
         // Locally, this will be available in the local maven repo.

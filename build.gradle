@@ -12,9 +12,10 @@ bootJar.enabled = false
 
 dependencies {
     api libs.bundles.spring.boot
+	api libs.spring.boot.starter.actuator
     api libs.spring.boot.starter.security
     api libs.spring.boot.starter.thymeleaf
-    api libs.bundles.swagger
+	api libs.springdoc.ui
 
     implementation libs.jwt
 	implementation libs.spring.boot.starter.mail
@@ -24,7 +25,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = 'com.tpero.spring'
-            artifactId = 'spring-common'
+            artifactId = project.name
             version = '0.0'
             from components.java
         }

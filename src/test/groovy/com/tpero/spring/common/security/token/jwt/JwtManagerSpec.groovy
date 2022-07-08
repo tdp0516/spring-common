@@ -1,8 +1,10 @@
 package com.tpero.spring.common.security.token.jwt
 
 import com.tpero.spring.common.security.token.TokenData
+import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
+@SpringBootTest
 class JwtManagerSpec extends Specification {
 	def "Test provided token can be parsed"() {
 		given:

@@ -20,7 +20,7 @@ import java.util.*
 @ConditionalOnProperty("jwt.issuer", "jwt.secret.key")
 class JwtManager(
 	@Value("\${jwt.issuer}") val issuer: String,
-	@Value("\${jwt.secret.key}") val secret: String = "some-super-secret-key"
+	@Value("\${jwt.secret.key}") val secret: String
 ) : TokenParser, TokenProvider {
 	override fun parse(token: String): TokenData {
 		val decodedToken = JWT.decode(token)
